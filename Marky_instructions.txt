@@ -1,0 +1,58 @@
+For run Marky:
+
+To install the application Marky requires the following dependencies:
+
+A database manager such as mySQL, Oracle, etc..
+Apache, with PHP 5.5 installed and module mod_rewrite enabled
+You can use a (Wamp) or a Lamp.
+Then you should follow the steps below.
+
+the folder Marky in the directory of apache /WWW.
+Prepare by adding application permissions readable, writeable and executable.
+Edit app / Config / core.php and change Security.salt and Security.cipherSeed (change a letter any value they have), it is not strictly necessary.
+Edit database.php. Set the name, login and password for the database. For example, if using MySQL with user "server" and the password "server" would look like:
+
+
+public $default = array ( 
+    'datasource' => 'Database / Mysql',
+    'persistent' => false, 
+    'host' => 'localhost', 
+    'login' => 'server', 
+    'password' => 'server', 
+    'database' => 'marky', 
+    'prefix' =>'' );
+
+You need to modify the file .Htcacessù Marky directory so that it is as follows:
+
+# Options Indexes FollowSymLinks MultiViews 
+# AllowOverride All # HERE PUT None, change to All 
+# Order allow, deny # allow from all
+You must then run the script marky.sql in the database.
+
+
+Users in exmaples
+	For admin:
+	  user:Admin
+	  password:123456
+	For User:
+	  user:usr1
+	  password:123456
+	  user:usr2
+	  password:123456
+
+
+ you think you need more security in Marky, you should change the following following lines 
+in app/config/core file
+
+/**
+ * A random string used in security hashing methods.
+ */
+	
+Configure::write('Security.salt', 'DYhG93b0qyJfIxfs3guVoUuWWwvniR2G0FgaC9mi');
+
+
+/**
+ * A random numeric string (digits only) used to encrypt/decrypt strings.
+ */
+	
+Configure::write('Security.cipherSeed', '76859309657423582496749683645');
